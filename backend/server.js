@@ -19,9 +19,10 @@ db();
 app.use("/api/auth", authRoutes);
 app.use("/api/todos", todoRoutes);
 
-// ✅ Serve frontend build (Vite uses `dist`)
+// ✅ Serve frontend build
 app.use(express.static(path.join(__dirname, "frontend", "dist")));
 
+// ✅ Catch-all for client-side routing
 app.get("*", (req, res) => {
   res.sendFile(path.join(__dirname, "frontend", "dist", "index.html"));
 });
